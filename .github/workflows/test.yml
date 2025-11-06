@@ -1,0 +1,42 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    defaults: 
+      run: 
+        working-directory: ./topic-00-testing/javascript
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: "24"
+
+      - name: Install dependencies
+        run: |
+          echo $ cd topic-00-testing/javascript 
+          cd topic-00-testing/javascript 
+          echo $ npm install
+          npm install
+      
+      - name: Run unit tests
+        run: |
+          echo $ cd topic-00-testing/javascript 
+          cd topic-00-testing/javascript 
+          echo $ npm install
+          npm test
+
+      - name: Run cucumber tests
+        run: |
+          echo $ cd topic-00-testing/javascript 
+          cd topic-00-testing/javascript 
+          echo $ npm install
+          npm test:cucumber
